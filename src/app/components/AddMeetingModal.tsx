@@ -96,7 +96,7 @@ export function AddMeetingModal({ onClose, onAdd }: Props) {
                 <button
                   key={e}
                   onClick={() => setEmoji(e)}
-                  className={`w-10 h-10 text-xl rounded-xl border-2 transition-all ${emoji === e ? 'border-[#0066FF] bg-[#DBEAFE]' : 'border-gray-100 bg-gray-50'}`}
+                  className={`w-[60px] h-[60px] text-3xl rounded-xl border-2 transition-all ${emoji === e ? 'border-[#0066FF] bg-[#DBEAFE]' : 'border-gray-100 bg-gray-50'}`}
                 >
                   {e}
                 </button>
