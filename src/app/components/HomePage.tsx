@@ -49,24 +49,16 @@ export function HomePage() {
               <p className="text-2xl" style={{ fontWeight: 700, color: '#1A1A1A' }}>{meetings.length}</p>
             </div>
 
-            {/* View toggle */}
-            <div className="flex items-center h-[60px] bg-white border border-gray-100 rounded-2xl overflow-hidden shrink-0">
-              <button
-                onClick={() => setViewMode('list')}
-                className="w-[44px] h-full flex items-center justify-center transition-colors"
-                style={{ backgroundColor: viewMode === 'list' ? '#DBEAFE' : 'transparent' }}
-              >
-                <LayoutList className="w-4 h-4" style={{ color: viewMode === 'list' ? '#0066FF' : '#9CA3AF' }} />
-              </button>
-              <div className="w-px h-6 bg-gray-100" />
-              <button
-                onClick={() => setViewMode('card')}
-                className="w-[44px] h-full flex items-center justify-center transition-colors"
-                style={{ backgroundColor: viewMode === 'card' ? '#DBEAFE' : 'transparent' }}
-              >
-                <LayoutGrid className="w-4 h-4" style={{ color: viewMode === 'card' ? '#0066FF' : '#9CA3AF' }} />
-              </button>
-            </div>
+            {/* View toggle - single button */}
+            <button
+              onClick={() => setViewMode(v => v === 'list' ? 'card' : 'list')}
+              className="w-[60px] h-[60px] bg-white border border-gray-100 rounded-2xl flex items-center justify-center shrink-0 transition-colors active:bg-gray-50"
+            >
+              {viewMode === 'list'
+                ? <LayoutGrid className="w-4 h-4" style={{ color: '#0066FF' }} />
+                : <LayoutList className="w-4 h-4" style={{ color: '#0066FF' }} />
+              }
+            </button>
           </div>
         )}
 
@@ -94,21 +86,13 @@ export function HomePage() {
                 <button
                   key={meeting.id}
                   onClick={() => navigate(`/meeting/${meeting.id}`)}
-                  className={`w-full flex items-center gap-3 px-4 py-3.5 active:bg-gray-50 transition-colors text-left ${index !== meetings.length - 1 ? 'border-b border-gray-100' : ''}`}
+                  className={`w-full flex items-center gap-3 px-4 py-4 active:bg-gray-50 transition-colors text-left ${index !== meetings.length - 1 ? 'border-b border-gray-100' : ''}`}
                 >
-                  {/* Info */}
+                  {/* Info - 3 lines */}
                   <div className="flex-1 min-w-0">
-                    <div className="flex items-center justify-between gap-2 mb-1">
-                      <h3 className="text-sm truncate" style={{ fontWeight: 600, color: '#1A1A1A' }}>{meeting.title}</h3>
-                      {total > 0 && (
-                        <span className="text-sm shrink-0" style={{ fontWeight: 700, color: '#0066FF' }}>
-                          {formatAmount(total)}
-                        </span>
-                      )}
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <span className="text-xs text-gray-400">{formatDate(meeting.date)}</span>
-                      <span className="text-gray-200">·</span>
+                    <h3 className="text-sm mb-1" style={{ fontWeight: 600, color: '#1A1A1A' }}>{meeting.title}</h3>
+                    <p className="text-xs text-gray-400 mb-1">{formatDate(meeting.date)}</p>
+                    <div className="flex items-center gap-1.5">
                       <div className="flex -space-x-1.5">
                         {meeting.participants.slice(0, 4).map(p => (
                           <div
@@ -128,7 +112,16 @@ export function HomePage() {
                       <span className="text-xs text-gray-400">{meeting.participants.length}명</span>
                     </div>
                   </div>
-                  <ChevronRight className="w-4 h-4 text-gray-300 shrink-0" />
+
+                  {/* Price + chevron - vertically centered */}
+                  <div className="flex items-center gap-1 shrink-0">
+                    {total > 0 && (
+                      <span className="text-sm" style={{ fontWeight: 700, color: '#0066FF' }}>
+                        {formatAmount(total)}
+                      </span>
+                    )}
+                    <ChevronRight className="w-4 h-4 text-gray-300" />
+                  </div>
                 </button>
               );
             })}
