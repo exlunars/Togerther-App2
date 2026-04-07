@@ -254,12 +254,7 @@ export function MeetingDetailPage() {
                           {CATEGORY_EMOJI[expense.category] ?? '💳'}
                         </div>
                         <div className="flex-1 min-w-0">
-                          <div className="flex items-center justify-between mb-1">
-                            <h3 className="text-sm" style={{ fontWeight: 600 }}>{expense.title}</h3>
-                            <span className="text-sm ml-2 flex-shrink-0" style={{ fontWeight: 700, color: '#0066FF' }}>
-                              {formatAmount(expense.amount)}
-                            </span>
-                          </div>
+                          <h3 className="text-sm mb-1" style={{ fontWeight: 600 }}>{expense.title}</h3>
                           <div className="flex items-center gap-2">
                             {expense.place && (
                               <div className="flex items-center gap-1">
@@ -283,6 +278,9 @@ export function MeetingDetailPage() {
                             </span>
                           </div>
                         </div>
+                        <span className="text-sm flex-shrink-0" style={{ fontWeight: 700, color: '#0066FF' }}>
+                          {formatAmount(expense.amount)}
+                        </span>
                         <ChevronDown className={`w-4 h-4 text-gray-300 flex-shrink-0 transition-transform ${isExpanded ? 'rotate-180' : ''}`} />
                       </button>
 
