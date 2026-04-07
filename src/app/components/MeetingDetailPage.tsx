@@ -77,7 +77,7 @@ export function MeetingDetailPage() {
         {/* Back button */}
         <button
           onClick={() => navigate('/')}
-          className="absolute top-12 left-4 w-10 h-10 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center"
+          className="absolute top-7 left-4 w-10 h-10 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center"
         >
           <ArrowLeft className="w-5 h-5 text-white" />
         </button>
@@ -85,7 +85,7 @@ export function MeetingDetailPage() {
         {/* Delete button */}
         <button
           onClick={handleDeleteMeeting}
-          className="absolute top-12 right-4 w-10 h-10 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center"
+          className="absolute top-7 right-4 w-10 h-10 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center"
         >
           <Trash2 className="w-4 h-4 text-white" />
         </button>
@@ -94,9 +94,6 @@ export function MeetingDetailPage() {
         <div className="absolute bottom-0 left-0 right-0 p-5">
           <div className="max-w-[430px] mx-auto">
             <div className="flex items-end gap-3">
-              <div className="w-12 h-12 bg-white/90 rounded-2xl flex items-center justify-center text-2xl">
-                {meeting.emoji}
-              </div>
               <div>
                 <h1 className="text-white text-xl mb-0.5" style={{ fontWeight: 700 }}>{meeting.title}</h1>
                 <p className="text-white/80 text-sm">{formatDate(meeting.date)}</p>
@@ -254,7 +251,7 @@ export function MeetingDetailPage() {
                           {CATEGORY_EMOJI[expense.category] ?? '💳'}
                         </div>
                         <div className="flex-1 min-w-0">
-                          <div className="flex items-start justify-between mb-1">
+                          <div className="flex items-center justify-between mb-1">
                             <h3 className="text-sm" style={{ fontWeight: 600 }}>{expense.title}</h3>
                             <span className="text-sm ml-2 flex-shrink-0" style={{ fontWeight: 700, color: '#0066FF' }}>
                               {formatAmount(expense.amount)}
