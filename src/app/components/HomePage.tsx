@@ -66,59 +66,66 @@ export function HomePage() {
             </button>
           </div>
         ) : (
-          <div className="bg-white rounded-2xl border border-gray-100 overflow-hidden">
-            {meetings.map((meeting, index) => {
+          <div className="space-y-4">
+            {meetings.map(meeting => {
               const total = getTotalExpense(meeting.expenses);
               return (
                 <button
                   key={meeting.id}
                   onClick={() => navigate(`/meeting/${meeting.id}`)}
-                  className={`w-full flex items-center gap-4 px-4 py-4 active:bg-gray-50 transition-colors text-left ${index !== meetings.length - 1 ? 'border-b border-gray-100' : ''}`}
+                  className="w-full bg-white rounded-3xl overflow-hidden border border-gray-100 active:scale-[0.98] transition-transform text-left"
                 >
-                  {/* Thumbnail */}
-                  <div className="w-12 h-12 rounded-xl overflow-hidden shrink-0">
+                  {/* Cover */}
+                  <div className="relative h-44 overflow-hidden">
                     <img
                       src={meeting.coverImage}
                       alt={meeting.title}
                       className="w-full h-full object-cover"
                     />
-                  </div>
-
-                  {/* Info */}
-                  <div className="flex-1 min-w-0">
-                    <h3 className="text-sm truncate" style={{ fontWeight: 600, color: '#1A1A1A' }}>{meeting.title}</h3>
-                    <p className="text-xs text-gray-400 mt-0.5">{formatDate(meeting.date)}</p>
-                    <div className="flex items-center gap-2 mt-1.5">
-                      {/* Participants */}
-                      <div className="flex -space-x-1.5">
-                        {meeting.participants.slice(0, 4).map(p => (
-                          <div
-                            key={p.id}
-                            className="w-5 h-5 rounded-full border-2 border-white flex items-center justify-center text-[9px] text-white"
-                            style={{ backgroundColor: p.color }}
-                          >
-                            {p.name[0]}
-                          </div>
-                        ))}
-                        {meeting.participants.length > 4 && (
-                          <div className="w-5 h-5 rounded-full border-2 border-white bg-gray-300 flex items-center justify-center text-[9px] text-white">
-                            +{meeting.participants.length - 4}
-                          </div>
-                        )}
-                      </div>
-                      <span className="text-xs text-gray-400">{meeting.participants.length}명</span>
-                      {total > 0 && (
-                        <>
-                          <span className="text-gray-200">·</span>
-                          <span className="text-xs" style={{ color: '#0066FF', fontWeight: 500 }}>
-                            {formatAmount(total)}
-                          </span>
-                        </>
-                      )}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+                    {/* Title overlay */}
+                    <div className="absolute bottom-0 left-0 right-0 p-4">
+                      <h3 className="text-white text-base mb-0.5" style={{ fontWeight: 700 }}>{meeting.title}</h3>
+                      <p className="text-white/80 text-xs">{formatDate(meeting.date)}</p>
                     </div>
                   </div>
 
-                  <ChevronRight className="w-4 h-4 text-gray-300 shrink-0" />
+                  {/* Info */}
+                  <div className="px-4 py-3 flex items-center justify-between">
+                    <div className="flex items-center gap-3">
+                      {/* Participants */}
+                      <div className="flex items-center">
+                        <div className="flex -space-x-2">
+                          {meeting.participants.slice(0, 4).map(p => (
+                            <div
+                              key={p.id}
+                              className="w-7 h-7 rounded-full border-2 border-white flex items-center justify-center text-xs text-white"
+                              style={{ backgroundColor: p.color }}
+                            >
+                              {p.name[0]}
+                            </div>
+                          ))}
+                          {meeting.participants.length > 4 && (
+                            <div className="w-7 h-7 rounded-full border-2 border-white bg-gray-300 flex items-center justify-center text-xs text-white">
+                              +{meeting.participants.length - 4}
+                            </div>
+                          )}
+                        </div>
+                        <span className="ml-2 text-xs text-gray-400">{meeting.participants.length}명</span>
+                      </div>
+
+                      {/* Expense */}
+                      {total > 0 && (
+                        <div className="flex items-center gap-1 px-2.5 py-1 rounded-full" style={{ backgroundColor: '#DBEAFE' }}>
+                          <Wallet className="w-3 h-3" style={{ color: '#0066FF' }} />
+                          <span className="text-xs" style={{ color: '#0066FF', fontWeight: 500 }}>
+                            {formatAmount(total)}
+                          </span>
+                        </div>
+                      )}
+                    </div>
+                    <ChevronRight className="w-4 h-4 text-gray-300" />
+                  </div>
                 </button>
               );
             })}
