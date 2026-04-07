@@ -28,7 +28,7 @@ export function HomePage() {
           <button
             onClick={() => setShowAddModal(true)}
             className="flex items-center gap-1.5 px-4 py-2 rounded-full text-white text-sm shadow-md active:scale-95 transition-transform"
-            style={{ backgroundColor: '#6750A4', fontWeight: 600 }}
+            style={{ backgroundColor: 'rgba(23, 33, 115, 1)', fontWeight: 600 }}
           >
             <Plus className="w-4 h-4" />
             새 모임
