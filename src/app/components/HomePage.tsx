@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Plus, Users, ChevronRight, Wallet, CalendarDays } from 'lucide-react';
+import { Plus, ChevronRight, Wallet, CalendarDays, LayoutList, LayoutGrid } from 'lucide-react';
 import { useNavigate } from 'react-router';
 import { useMeetings, formatAmount, formatDate, getTotalExpense } from '../store/meetingContext';
 import { AddMeetingModal } from './AddMeetingModal';
@@ -9,6 +9,7 @@ export function HomePage() {
   const navigate = useNavigate();
   const { meetings, addMeeting } = useMeetings();
   const [showAddModal, setShowAddModal] = useState(false);
+  const [viewMode, setViewMode] = useState<'list' | 'card'>('list');
 
   const handleAdd = (meeting: Meeting) => {
     addMeeting(meeting);
@@ -37,15 +38,34 @@ export function HomePage() {
       </div>
 
       <div className="max-w-[430px] mx-auto px-4 py-4">
-        {/* Stats banner */}
+        {/* Stats banner + View toggle */}
         {meetings.length > 0 && (
-          <div className="mb-6">
-            <div className="bg-white rounded-2xl px-4 h-[60px] border border-gray-100 flex items-center gap-3">
+          <div className="mb-6 flex items-center gap-2">
+            <div className="flex-1 bg-white rounded-2xl px-4 h-[60px] border border-gray-100 flex items-center gap-3">
               <div className="w-9 h-9 rounded-xl flex items-center justify-center shrink-0" style={{ backgroundColor: '#DBEAFE' }}>
                 <CalendarDays className="w-5 h-5" style={{ color: '#0066FF' }} />
               </div>
               <p className="text-xs text-gray-400 flex-1">총 모임</p>
               <p className="text-2xl" style={{ fontWeight: 700, color: '#1A1A1A' }}>{meetings.length}</p>
+            </div>
+
+            {/* View toggle */}
+            <div className="flex items-center h-[60px] bg-white border border-gray-100 rounded-2xl overflow-hidden shrink-0">
+              <button
+                onClick={() => setViewMode('list')}
+                className="w-[44px] h-full flex items-center justify-center transition-colors"
+                style={{ backgroundColor: viewMode === 'list' ? '#DBEAFE' : 'transparent' }}
+              >
+                <LayoutList className="w-4 h-4" style={{ color: viewMode === 'list' ? '#0066FF' : '#9CA3AF' }} />
+              </button>
+              <div className="w-px h-6 bg-gray-100" />
+              <button
+                onClick={() => setViewMode('card')}
+                className="w-[44px] h-full flex items-center justify-center transition-colors"
+                style={{ backgroundColor: viewMode === 'card' ? '#DBEAFE' : 'transparent' }}
+              >
+                <LayoutGrid className="w-4 h-4" style={{ color: viewMode === 'card' ? '#0066FF' : '#9CA3AF' }} />
+              </button>
             </div>
           </div>
         )}
@@ -65,7 +85,56 @@ export function HomePage() {
               첫 모임 만들기
             </button>
           </div>
+        ) : viewMode === 'list' ? (
+          /* ── List View ── */
+          <div className="bg-white rounded-2xl border border-gray-100 overflow-hidden">
+            {meetings.map((meeting, index) => {
+              const total = getTotalExpense(meeting.expenses);
+              return (
+                <button
+                  key={meeting.id}
+                  onClick={() => navigate(`/meeting/${meeting.id}`)}
+                  className={`w-full flex items-center gap-3 px-4 py-3.5 active:bg-gray-50 transition-colors text-left ${index !== meetings.length - 1 ? 'border-b border-gray-100' : ''}`}
+                >
+                  {/* Info */}
+                  <div className="flex-1 min-w-0">
+                    <div className="flex items-center justify-between gap-2 mb-1">
+                      <h3 className="text-sm truncate" style={{ fontWeight: 600, color: '#1A1A1A' }}>{meeting.title}</h3>
+                      {total > 0 && (
+                        <span className="text-sm shrink-0" style={{ fontWeight: 700, color: '#0066FF' }}>
+                          {formatAmount(total)}
+                        </span>
+                      )}
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <span className="text-xs text-gray-400">{formatDate(meeting.date)}</span>
+                      <span className="text-gray-200">·</span>
+                      <div className="flex -space-x-1.5">
+                        {meeting.participants.slice(0, 4).map(p => (
+                          <div
+                            key={p.id}
+                            className="w-4 h-4 rounded-full border border-white flex items-center justify-center text-[8px] text-white"
+                            style={{ backgroundColor: p.color }}
+                          >
+                            {p.name[0]}
+                          </div>
+                        ))}
+                        {meeting.participants.length > 4 && (
+                          <div className="w-4 h-4 rounded-full border border-white bg-gray-300 flex items-center justify-center text-[8px] text-white">
+                            +{meeting.participants.length - 4}
+                          </div>
+                        )}
+                      </div>
+                      <span className="text-xs text-gray-400">{meeting.participants.length}명</span>
+                    </div>
+                  </div>
+                  <ChevronRight className="w-4 h-4 text-gray-300 shrink-0" />
+                </button>
+              );
+            })}
+          </div>
         ) : (
+          /* ── Card View ── */
           <div className="space-y-4">
             {meetings.map(meeting => {
               const total = getTotalExpense(meeting.expenses);
@@ -83,7 +152,6 @@ export function HomePage() {
                       className="w-full h-full object-cover"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
-                    {/* Title overlay */}
                     <div className="absolute bottom-0 left-0 right-0 p-4">
                       <h3 className="text-white text-base mb-0.5" style={{ fontWeight: 700 }}>{meeting.title}</h3>
                       <p className="text-white/80 text-xs">{formatDate(meeting.date)}</p>
@@ -93,7 +161,6 @@ export function HomePage() {
                   {/* Info */}
                   <div className="px-4 py-3 flex items-center justify-between">
                     <div className="flex items-center gap-3">
-                      {/* Participants */}
                       <div className="flex items-center">
                         <div className="flex -space-x-2">
                           {meeting.participants.slice(0, 4).map(p => (
@@ -113,8 +180,6 @@ export function HomePage() {
                         </div>
                         <span className="ml-2 text-xs text-gray-400">{meeting.participants.length}명</span>
                       </div>
-
-                      {/* Expense */}
                       {total > 0 && (
                         <div className="flex items-center gap-1 px-2.5 py-1 rounded-full" style={{ backgroundColor: '#DBEAFE' }}>
                           <Wallet className="w-3 h-3" style={{ color: '#0066FF' }} />
