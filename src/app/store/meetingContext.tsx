@@ -107,10 +107,10 @@ const MOCK_MEETINGS: Meeting[] = [
       },
     ],
     expenses: [
-      { id: 'e1', title: '편의점 쇼핑', amount: 48000, paidBy: 'p1', splitWith: ['p1', 'p2', 'p3', 'p4'], category: '식료품', activityId: 'a1' },
-      { id: 'e2', title: '치킨&맥주', amount: 62000, paidBy: 'p2', splitWith: ['p1', 'p2', 'p3', 'p4'], category: '식사', activityId: 'a2' },
-      { id: 'e3', title: '자전거 렌탈', amount: 40000, paidBy: 'p3', splitWith: ['p1', 'p2', 'p3', 'p4'], category: '활동', activityId: 'a3' },
-      { id: 'e4', title: '카페', amount: 28000, paidBy: 'p4', splitWith: ['p1', 'p2', 'p3', 'p4'], category: '카페', activityId: 'a4' },
+      { id: 'e1', title: '편의점 쇼핑', amount: 48000, paidBy: 'p1', splitWith: ['p1', 'p2', 'p3', 'p4'], category: '식료품' },
+      { id: 'e2', title: '치킨&맥주', amount: 62000, paidBy: 'p2', splitWith: ['p1', 'p2', 'p3', 'p4'], category: '식사' },
+      { id: 'e3', title: '자전거 렌탈', amount: 40000, paidBy: 'p3', splitWith: ['p1', 'p2', 'p3', 'p4'], category: '활동' },
+      { id: 'e4', title: '카페', amount: 28000, paidBy: 'p4', splitWith: ['p1', 'p2', 'p3', 'p4'], category: '카페' },
     ],
   },
   {

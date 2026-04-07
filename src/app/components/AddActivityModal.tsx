@@ -63,7 +63,7 @@ export function AddActivityModal({ onClose, onAdd }: Props) {
                 <button
                   key={e}
                   onClick={() => setEmoji(e)}
-                  className={`w-10 h-10 text-xl rounded-xl border-2 transition-all ${emoji === e ? 'border-[#6750A4] bg-[#E8DEF8]' : 'border-gray-100 bg-gray-50'}`}
+                  className={`w-10 h-10 text-xl rounded-xl border-2 transition-all ${emoji === e ? 'border-[#0066FF] bg-[#DBEAFE]' : 'border-gray-100 bg-gray-50'}`}
                 >
                   {e}
                 </button>
@@ -79,7 +79,7 @@ export function AddActivityModal({ onClose, onAdd }: Props) {
                 type="time"
                 value={time}
                 onChange={e => setTime(e.target.value)}
-                className="w-full px-3 py-3 bg-gray-50 rounded-xl border border-gray-100 outline-none focus:border-[#6750A4] transition-colors text-sm"
+                className="w-full px-3 py-3 bg-gray-50 rounded-xl border border-gray-100 outline-none focus:border-[#0066FF] transition-colors text-sm"
               />
             </div>
             <div className="flex-1">
@@ -89,7 +89,7 @@ export function AddActivityModal({ onClose, onAdd }: Props) {
                 value={title}
                 onChange={e => setTitle(e.target.value)}
                 placeholder="ex. 점심 식사, 카페"
-                className="w-full px-4 py-3 bg-gray-50 rounded-xl border border-gray-100 outline-none focus:border-[#6750A4] transition-colors"
+                className="w-full px-4 py-3 bg-gray-50 rounded-xl border border-gray-100 outline-none focus:border-[#0066FF] transition-colors"
               />
             </div>
           </div>
@@ -102,7 +102,7 @@ export function AddActivityModal({ onClose, onAdd }: Props) {
               value={place}
               onChange={e => setPlace(e.target.value)}
               placeholder="ex. 여의도 한강공원"
-              className="w-full px-4 py-3 bg-gray-50 rounded-xl border border-gray-100 outline-none focus:border-[#6750A4] transition-colors"
+              className="w-full px-4 py-3 bg-gray-50 rounded-xl border border-gray-100 outline-none focus:border-[#0066FF] transition-colors"
             />
           </div>
 
@@ -114,7 +114,7 @@ export function AddActivityModal({ onClose, onAdd }: Props) {
               onChange={e => setMemo(e.target.value)}
               placeholder="오늘의 소감이나 기억하고 싶은 것을 적어보세요"
               rows={3}
-              className="w-full px-4 py-3 bg-gray-50 rounded-xl border border-gray-100 outline-none focus:border-[#6750A4] transition-colors resize-none text-sm"
+              className="w-full px-4 py-3 bg-gray-50 rounded-xl border border-gray-100 outline-none focus:border-[#0066FF] transition-colors resize-none text-sm"
             />
           </div>
 
@@ -126,7 +126,7 @@ export function AddActivityModal({ onClose, onAdd }: Props) {
                 <button
                   key={i}
                   onClick={() => setSelectedPhoto(i)}
-                  className={`relative h-16 rounded-xl overflow-hidden border-2 transition-all ${selectedPhoto === i ? 'border-[#6750A4]' : 'border-gray-100'}`}
+                  className={`relative h-16 rounded-xl overflow-hidden border-2 transition-all ${selectedPhoto === i ? 'border-[#0066FF]' : 'border-gray-100'}`}
                 >
                   {preset.url ? (
                     <img src={preset.url} alt={preset.label} className="w-full h-full object-cover" />
@@ -135,7 +135,7 @@ export function AddActivityModal({ onClose, onAdd }: Props) {
                       <span className="text-xs text-gray-400">없음</span>
                     </div>
                   )}
-                  <div className={`absolute bottom-0 left-0 right-0 py-0.5 text-center text-xs ${selectedPhoto === i ? 'bg-[#6750A4] text-white' : 'bg-black/30 text-white'}`}>
+                  <div className={`absolute bottom-0 left-0 right-0 py-0.5 text-center text-xs ${selectedPhoto === i ? 'bg-[#0066FF] text-white' : 'bg-black/30 text-white'}`}>
                     {preset.label}
                   </div>
                 </button>
@@ -147,7 +147,7 @@ export function AddActivityModal({ onClose, onAdd }: Props) {
             onClick={handleSubmit}
             disabled={!title.trim()}
             className="w-full py-4 rounded-2xl text-white transition-all disabled:opacity-40 disabled:cursor-not-allowed"
-            style={{ backgroundColor: '#6750A4', fontWeight: 600 }}
+            style={{ backgroundColor: '#0066FF', fontWeight: 600 }}
           >
             활동 추가하기
           </button>

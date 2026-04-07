@@ -84,7 +84,7 @@ export function AddMeetingModal({ onClose, onAdd }: Props) {
               value={title}
               onChange={e => setTitle(e.target.value)}
               placeholder="ex. 한강 피크닉, 제주도 여행"
-              className="w-full px-4 py-3 bg-gray-50 rounded-xl border border-gray-100 outline-none focus:border-[#6750A4] transition-colors"
+              className="w-full px-4 py-3 bg-gray-50 rounded-xl border border-gray-100 outline-none focus:border-[#0066FF] transition-colors"
             />
           </div>
 
@@ -96,7 +96,7 @@ export function AddMeetingModal({ onClose, onAdd }: Props) {
                 <button
                   key={e}
                   onClick={() => setEmoji(e)}
-                  className={`w-10 h-10 text-xl rounded-xl border-2 transition-all ${emoji === e ? 'border-[#6750A4] bg-[#E8DEF8]' : 'border-gray-100 bg-gray-50'}`}
+                  className={`w-10 h-10 text-xl rounded-xl border-2 transition-all ${emoji === e ? 'border-[#0066FF] bg-[#DBEAFE]' : 'border-gray-100 bg-gray-50'}`}
                 >
                   {e}
                 </button>
@@ -112,13 +112,13 @@ export function AddMeetingModal({ onClose, onAdd }: Props) {
                 <button
                   key={i}
                   onClick={() => setSelectedCover(i)}
-                  className={`relative h-20 rounded-xl overflow-hidden border-2 transition-all ${selectedCover === i ? 'border-[#6750A4] scale-95' : 'border-transparent'}`}
+                  className={`relative h-20 rounded-xl overflow-hidden border-2 transition-all ${selectedCover === i ? 'border-[#0066FF] scale-95' : 'border-transparent'}`}
                 >
                   <img src={img} alt="" className="w-full h-full object-cover" />
                   {selectedCover === i && (
-                    <div className="absolute inset-0 bg-[#6750A4]/30 flex items-center justify-center">
+                    <div className="absolute inset-0 bg-[#0066FF]/30 flex items-center justify-center">
                       <div className="w-5 h-5 bg-white rounded-full flex items-center justify-center">
-                        <div className="w-3 h-3 bg-[#6750A4] rounded-full" />
+                        <div className="w-3 h-3 bg-[#0066FF] rounded-full" />
                       </div>
                     </div>
                   )}
@@ -134,7 +134,7 @@ export function AddMeetingModal({ onClose, onAdd }: Props) {
               type="date"
               value={date}
               onChange={e => setDate(e.target.value)}
-              className="w-full px-4 py-3 bg-gray-50 rounded-xl border border-gray-100 outline-none focus:border-[#6750A4] transition-colors"
+              className="w-full px-4 py-3 bg-gray-50 rounded-xl border border-gray-100 outline-none focus:border-[#0066FF] transition-colors"
             />
           </div>
 
@@ -148,11 +148,11 @@ export function AddMeetingModal({ onClose, onAdd }: Props) {
                 onChange={e => setParticipantName(e.target.value)}
                 onKeyDown={e => e.key === 'Enter' && addParticipant()}
                 placeholder="이름 입력"
-                className="flex-1 px-4 py-3 bg-gray-50 rounded-xl border border-gray-100 outline-none focus:border-[#6750A4] transition-colors"
+                className="flex-1 px-4 py-3 bg-gray-50 rounded-xl border border-gray-100 outline-none focus:border-[#0066FF] transition-colors"
               />
               <button
                 onClick={addParticipant}
-                className="w-12 h-12 bg-[#6750A4] rounded-xl flex items-center justify-center flex-shrink-0"
+                className="w-12 h-12 bg-[#0066FF] rounded-xl flex items-center justify-center flex-shrink-0"
               >
                 <Plus className="w-5 h-5 text-white" />
               </button>
@@ -182,7 +182,7 @@ export function AddMeetingModal({ onClose, onAdd }: Props) {
             onClick={handleSubmit}
             disabled={!title.trim() || participants.length === 0}
             className="w-full py-4 rounded-2xl text-white transition-all disabled:opacity-40 disabled:cursor-not-allowed"
-            style={{ backgroundColor: '#6750A4', fontWeight: 600 }}
+            style={{ backgroundColor: '#0066FF', fontWeight: 600 }}
           >
             모임 만들기
           </button>
