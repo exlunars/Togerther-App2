@@ -90,26 +90,26 @@ export function HomePage() {
                 >
                   {/* Info - 3 lines */}
                   <div className="flex-1 min-w-0">
-                    <h3 className="text-sm mb-1" style={{ fontWeight: 600, color: '#1A1A1A' }}>{meeting.title}</h3>
-                    <p className="text-xs text-gray-400 mb-1">{formatDate(meeting.date)}</p>
+                    <h3 className="text-base mb-1" style={{ fontWeight: 600, color: '#1A1A1A' }}>{meeting.title}</h3>
+                    <p className="text-sm text-gray-400 mb-1">{formatDate(meeting.date)}</p>
                     <div className="flex items-center gap-1.5">
                       <div className="flex -space-x-1.5">
                         {meeting.participants.slice(0, 4).map(p => (
                           <div
                             key={p.id}
-                            className="w-4 h-4 rounded-full border border-white flex items-center justify-center text-[8px] text-white"
+                            className="w-4 h-4 rounded-full border border-white flex items-center justify-center text-[10px] text-white"
                             style={{ backgroundColor: p.color }}
                           >
                             {p.name[0]}
                           </div>
                         ))}
                         {meeting.participants.length > 4 && (
-                          <div className="w-4 h-4 rounded-full border border-white bg-gray-300 flex items-center justify-center text-[8px] text-white">
+                          <div className="w-4 h-4 rounded-full border border-white bg-gray-300 flex items-center justify-center text-[10px] text-white">
                             +{meeting.participants.length - 4}
                           </div>
                         )}
                       </div>
-                      <span className="text-xs text-gray-400">{meeting.participants.length}명</span>
+                      <span className="text-sm text-gray-400">{meeting.participants.length}명</span>
                     </div>
                   </div>
 
