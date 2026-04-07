@@ -23,10 +23,10 @@ export function MeetingDetailPage() {
 
   if (!meeting) {
     return (
-      <div className="min-h-screen flex items-center justify-center" style={{ backgroundColor: '#FEF7FF' }}>
+      <div className="min-h-screen flex items-center justify-center bg-white">
         <div className="text-center">
           <p className="text-gray-500 mb-4">모임을 찾을 수 없습니다</p>
-          <button onClick={() => navigate('/')} className="text-[#B3261E]" style={{ fontWeight: 600 }}>
+          <button onClick={() => navigate('/')} className="text-[#0066FF]" style={{ fontWeight: 600 }}>
             홈으로 돌아가기
           </button>
         </div>
@@ -68,7 +68,7 @@ export function MeetingDetailPage() {
   });
 
   return (
-    <div className="min-h-screen" style={{ backgroundColor: '#FEF7FF' }}>
+    <div className="min-h-screen bg-white">
       {/* Hero Cover */}
       <div className="relative h-64 overflow-hidden">
         <img src={meeting.coverImage} alt={meeting.title} className="w-full h-full object-cover" />
@@ -94,7 +94,7 @@ export function MeetingDetailPage() {
         <div className="absolute bottom-0 left-0 right-0 p-5">
           <div className="max-w-[430px] mx-auto">
             <div className="flex items-end gap-3">
-              <div className="w-12 h-12 bg-white/90 rounded-2xl flex items-center justify-center text-2xl shadow-lg">
+              <div className="w-12 h-12 bg-white/90 rounded-2xl flex items-center justify-center text-2xl">
                 {meeting.emoji}
               </div>
               <div>
@@ -108,7 +108,7 @@ export function MeetingDetailPage() {
 
       <div className="max-w-[430px] mx-auto">
         {/* Participants */}
-        <div className="bg-white px-5 py-4 shadow-sm">
+        <div className="bg-white px-5 py-4 border-b border-gray-100">
           <div className="flex items-center gap-2 mb-3">
             <Users className="w-4 h-4 text-gray-400" />
             <span className="text-sm text-gray-500">{meeting.participants.length}명 참여</span>
@@ -132,23 +132,23 @@ export function MeetingDetailPage() {
         {/* Main Content */}
         <div className="px-4 py-5 pb-28 space-y-4">
           {/* Combined Activities & Expenses List */}
-          <div className="bg-white rounded-2xl shadow-sm overflow-hidden">
+          <div className="bg-white rounded-2xl border border-gray-100 overflow-hidden">
             <div className="px-4 py-3 border-b border-gray-50 flex items-center justify-between">
               <div className="flex items-center gap-2">
-                <MapPin className="w-4 h-4" style={{ color: '#6750A4' }} />
+                <MapPin className="w-4 h-4" style={{ color: '#0066FF' }} />
                 <p className="text-sm text-gray-500" style={{ fontWeight: 600 }}>
                   장소별 지출
                 </p>
               </div>
               <button
                 onClick={() => setShowAddExpense(true)}
-                className="text-xs px-2.5 py-1 rounded-full" 
-                style={{ backgroundColor: '#E8DEF8', color: '#6750A4', fontWeight: 500 }}
+                className="text-xs px-2.5 py-1 rounded-full"
+                style={{ backgroundColor: '#DBEAFE', color: '#0066FF', fontWeight: 500 }}
               >
                 + 지출
               </button>
             </div>
-            
+
             {(meeting.activities.length === 0 && meeting.expenses.length === 0) ? (
               <div className="text-center py-12">
                 <div className="text-3xl mb-2">📍</div>
@@ -159,15 +159,15 @@ export function MeetingDetailPage() {
                 {/* Activities with linked expenses - only show if has expenses */}
                 {sortedActivities.map(activity => {
                   const expenses = expensesByActivity.get(activity.id) || [];
-                  if (expenses.length === 0) return null; // Skip activities without expenses
-                  
+                  if (expenses.length === 0) return null;
+
                   return (
                     <div key={activity.id}>
                       <div className="px-4 py-3">
                         <div className="flex items-start gap-3">
                           <div
                             className="w-9 h-9 rounded-xl flex items-center justify-center text-lg flex-shrink-0"
-                            style={{ backgroundColor: '#E5F1FF' }}
+                            style={{ backgroundColor: '#EFF6FF' }}
                           >
                             {activity.emoji}
                           </div>
@@ -194,7 +194,7 @@ export function MeetingDetailPage() {
                           </div>
                         </div>
                       </div>
-                      
+
                       {/* Linked Expenses */}
                       {expenses.map(expense => {
                         const payer = getParticipantById(expense.paidBy);
@@ -216,7 +216,7 @@ export function MeetingDetailPage() {
                                 )}
                               </div>
                               <div className="flex items-center gap-2">
-                                <span className="text-sm" style={{ fontWeight: 600, color: '#B3261E' }}>
+                                <span className="text-sm" style={{ fontWeight: 600, color: '#DC2626' }}>
                                   {formatAmount(expense.amount)}
                                 </span>
                                 <button
@@ -256,7 +256,7 @@ export function MeetingDetailPage() {
                         <div className="flex-1 min-w-0">
                           <div className="flex items-start justify-between mb-1">
                             <h3 className="text-sm" style={{ fontWeight: 600 }}>{expense.title}</h3>
-                            <span className="text-sm ml-2 flex-shrink-0" style={{ fontWeight: 700, color: '#6750A4' }}>
+                            <span className="text-sm ml-2 flex-shrink-0" style={{ fontWeight: 700, color: '#0066FF' }}>
                               {formatAmount(expense.amount)}
                             </span>
                           </div>
@@ -329,22 +329,22 @@ export function MeetingDetailPage() {
 
           {/* Total Expense Summary */}
           {totalExpense > 0 && (
-            <div className="bg-white rounded-2xl p-5 shadow-sm">
+            <div className="bg-white rounded-2xl p-5 border border-gray-100">
               <p className="text-sm text-gray-400 mb-1">총 지출</p>
-              <p className="text-3xl mb-3" style={{ fontWeight: 700, color: '#1D1B20' }}>
+              <p className="text-3xl mb-3" style={{ fontWeight: 700, color: '#1A1A1A' }}>
                 {formatAmount(totalExpense)}
               </p>
               <div className="flex gap-2 text-sm text-gray-500">
                 <span>{meeting.participants.length}명</span>
                 <span>·</span>
-                <span>1인당 약 <strong style={{ color: '#6750A4' }}>{formatAmount(Math.ceil(totalExpense / meeting.participants.length))}</strong></span>
+                <span>1인당 약 <strong style={{ color: '#0066FF' }}>{formatAmount(Math.ceil(totalExpense / meeting.participants.length))}</strong></span>
               </div>
             </div>
           )}
 
           {/* Settlement Results */}
           {totalExpense > 0 && settlements.length > 0 && (
-            <div className="bg-white rounded-2xl p-4 shadow-sm">
+            <div className="bg-white rounded-2xl p-4 border border-gray-100">
               <p className="text-sm text-gray-500 mb-3" style={{ fontWeight: 600 }}>정산 결과 🎯</p>
               <div className="space-y-3">
                 {settlements.map((s, i) => {
@@ -352,7 +352,7 @@ export function MeetingDetailPage() {
                   const to = getParticipantById(s.toId);
                   if (!from || !to) return null;
                   return (
-                    <div key={i} className="flex items-center gap-3 p-3 rounded-xl" style={{ backgroundColor: '#F6EDFF' }}>
+                    <div key={i} className="flex items-center gap-3 p-3 rounded-xl" style={{ backgroundColor: '#EFF6FF' }}>
                       <div className="w-8 h-8 rounded-full flex items-center justify-center text-sm text-white flex-shrink-0" style={{ backgroundColor: from.color }}>
                         {from.name[0]}
                       </div>
@@ -367,7 +367,7 @@ export function MeetingDetailPage() {
                           <span style={{ color: to.color }}>{to.name}</span>
                         </p>
                       </div>
-                      <span className="text-sm" style={{ fontWeight: 700, color: '#6750A4' }}>
+                      <span className="text-sm" style={{ fontWeight: 700, color: '#0066FF' }}>
                         {formatAmount(s.amount)}
                       </span>
                     </div>

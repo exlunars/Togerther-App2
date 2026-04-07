@@ -66,7 +66,7 @@ export function AddExpenseModal({ participants, activities, onClose, onAdd }: Pr
 
         <div className="overflow-y-auto flex-1 px-5 pb-8">
           {/* Amount - big and prominent */}
-          <div className="mb-5 bg-[#E8DEF8] rounded-2xl p-5 text-center">
+          <div className="mb-5 bg-[#DBEAFE] rounded-2xl p-5 text-center">
             <p className="text-sm text-gray-500 mb-2">총 금액</p>
             <div className="flex items-center justify-center gap-1">
               <input
@@ -76,13 +76,13 @@ export function AddExpenseModal({ participants, activities, onClose, onAdd }: Pr
                 onChange={e => handleAmountChange(e.target.value)}
                 placeholder="0"
                 className="text-3xl bg-transparent outline-none text-center w-40"
-                style={{ fontWeight: 700, color: '#6750A4' }}
+                style={{ fontWeight: 700, color: '#0066FF' }}
               />
               <span className="text-xl text-gray-400" style={{ fontWeight: 500 }}>원</span>
             </div>
             {splitWith.length > 0 && amount > 0 && (
               <p className="text-sm text-gray-500 mt-2">
-                1인당 <span style={{ color: '#6750A4', fontWeight: 600 }}>{perPerson.toLocaleString('ko-KR')}원</span>
+                1인당 <span style={{ color: '#0066FF', fontWeight: 600 }}>{perPerson.toLocaleString('ko-KR')}원</span>
               </p>
             )}
           </div>
@@ -95,7 +95,7 @@ export function AddExpenseModal({ participants, activities, onClose, onAdd }: Pr
               value={title}
               onChange={e => setTitle(e.target.value)}
               placeholder="ex. 삼겹살, 택시비"
-              className="w-full px-4 py-3 bg-gray-50 rounded-xl border border-gray-100 outline-none focus:border-[#6750A4] transition-colors"
+              className="w-full px-4 py-3 bg-gray-50 rounded-xl border border-gray-100 outline-none focus:border-[#0066FF] transition-colors"
             />
           </div>
 
@@ -107,7 +107,7 @@ export function AddExpenseModal({ participants, activities, onClose, onAdd }: Pr
                 <button
                   key={cat}
                   onClick={() => setCategory(cat)}
-                  className={`px-3 py-1.5 rounded-full text-sm flex items-center gap-1 border transition-all ${category === cat ? 'bg-[#6750A4] text-white border-[#6750A4]' : 'bg-gray-50 text-gray-600 border-gray-100'}`}
+                  className={`px-3 py-1.5 rounded-full text-sm flex items-center gap-1 border transition-all ${category === cat ? 'bg-[#0066FF] text-white border-[#0066FF]' : 'bg-gray-50 text-gray-600 border-gray-100'}`}
                 >
                   <span>{CATEGORY_EMOJI[cat]}</span>
                   <span>{cat}</span>
@@ -148,7 +148,7 @@ export function AddExpenseModal({ participants, activities, onClose, onAdd }: Pr
               <div className="flex items-center gap-2">
                 <button
                   onClick={() => setSplitWith(participants.map(p => p.id))}
-                  className="text-xs text-[#6750A4]"
+                  className="text-xs text-[#0066FF]"
                   style={{ fontWeight: 500 }}
                 >
                   전체 선택
@@ -193,7 +193,7 @@ export function AddExpenseModal({ participants, activities, onClose, onAdd }: Pr
             onClick={handleSubmit}
             disabled={!title.trim() || amount <= 0 || !paidBy || splitWith.length === 0}
             className="w-full py-4 rounded-2xl text-white transition-all disabled:opacity-40 disabled:cursor-not-allowed"
-            style={{ backgroundColor: '#6750A4', fontWeight: 600 }}
+            style={{ backgroundColor: '#0066FF', fontWeight: 600 }}
           >
             지출 추가하기
           </button>
