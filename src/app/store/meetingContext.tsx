@@ -96,21 +96,14 @@ const MOCK_MEETINGS: Meeting[] = [
         id: 'a3', time: '15:00', title: '자전거 타기',
         place: '한강 자전거길',
         memo: '다들 열심히 달렸음 ㅋㅋ 지호 넘어질 뻔해서 다들 놀람 😂',
+        photo: 'https://images.unsplash.com/photo-1571008887538-b36bb32f4571?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=800',
         emoji: '🚴',
-      },
-      {
-        id: 'a4', time: '17:00', title: '카페 타임',
-        place: '여의도 블루보틀',
-        memo: '마무리 커피 한 잔 ☕ 다음에 또 오자! 최고의 하루였음',
-        photo: 'https://images.unsplash.com/photo-1710880694444-970aaf7e7f97?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=800',
-        emoji: '☕',
       },
     ],
     expenses: [
       { id: 'e1', title: '편의점 쇼핑', amount: 48000, paidBy: 'p1', splitWith: ['p1', 'p2', 'p3', 'p4'], category: '식료품' },
       { id: 'e2', title: '치킨&맥주', amount: 62000, paidBy: 'p2', splitWith: ['p1', 'p2', 'p3', 'p4'], category: '식사' },
       { id: 'e3', title: '자전거 렌탈', amount: 40000, paidBy: 'p3', splitWith: ['p1', 'p2', 'p3', 'p4'], category: '활동' },
-      { id: 'e4', title: '카페', amount: 28000, paidBy: 'p4', splitWith: ['p1', 'p2', 'p3', 'p4'], category: '카페' },
     ],
   },
   {
