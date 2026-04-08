@@ -55,8 +55,8 @@ export function HomePage() {
               className="w-[60px] h-[60px] bg-white border border-gray-100 rounded-2xl flex items-center justify-center shrink-0 transition-colors active:bg-gray-50"
             >
               {viewMode === 'list'
-                ? <LayoutGrid className="w-4 h-4" style={{ color: '#0066FF' }} />
-                : <LayoutList className="w-4 h-4" style={{ color: '#0066FF' }} />
+                ? <LayoutGrid className="w-5 h-5" style={{ color: '#0066FF' }} />
+                : <LayoutList className="w-5 h-5" style={{ color: '#0066FF' }} />
               }
             </button>
           </div>
