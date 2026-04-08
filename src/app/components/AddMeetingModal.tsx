@@ -3,12 +3,12 @@ import { X, Plus, Trash2, Camera, CalendarDays } from 'lucide-react';
 import { Meeting, Participant, PARTICIPANT_COLORS } from '../store/meetingContext';
 
 const COVER_IMAGES = [
-  'https://images.unsplash.com/photo-1758272959533-201492a5d36c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=800',
+  'https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=800',
   'https://images.unsplash.com/photo-1621275471769-e6aa344546d5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=800',
   'https://images.unsplash.com/photo-1674076442296-2e2f3fcb0897?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=800',
   'https://images.unsplash.com/photo-1650313525283-f505691c3d73?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=800',
   'https://images.unsplash.com/photo-1772380406710-6d9206cb275d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=800',
-  'https://images.unsplash.com/photo-1763951778440-13af353b122a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=800',
+  'https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=800',
 ];
 
 const EMOJIS = ['🎉', '🧺', '✈️', '🎂', '🍻', '🎬', '⛺', '🎮', '🏃', '🎤', '🥘', '🌊'];
@@ -77,7 +77,7 @@ export function AddMeetingModal({ onClose, onAdd }: Props) {
 
         <div className="overflow-y-auto flex-1 px-5 pb-8">
           {/* Title */}
-          <div className="mb-5">
+          <div className="mt-5 mb-5">
             <label className="text-sm text-gray-500 mb-2 block">모임 이름 *</label>
             <input
               type="text"
