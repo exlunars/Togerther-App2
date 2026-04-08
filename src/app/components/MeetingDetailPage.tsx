@@ -347,7 +347,7 @@ export function MeetingDetailPage() {
           {/* Settlement Results */}
           {totalExpense > 0 && settlements.length > 0 && (
             <div className="bg-white rounded-2xl p-4 border border-gray-100">
-              <p className="text-sm text-gray-500 mb-3" style={{ fontWeight: 600 }}>정산 결과 🎯</p>
+              <p className="text-sm text-gray-500 mb-3" style={{ fontWeight: 600 }}>정산 결과</p>
               <div className="space-y-3">
                 {settlements.map((s, i) => {
                   const from = getParticipantById(s.fromId);
