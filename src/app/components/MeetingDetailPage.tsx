@@ -354,7 +354,7 @@ export function MeetingDetailPage() {
                   const to = getParticipantById(s.toId);
                   if (!from || !to) return null;
                   return (
-                    <div key={i} className="flex items-center gap-3 p-3 rounded-xl" style={{ backgroundColor: '#EFF6FF' }}>
+                    <div key={i} className="flex items-center gap-3 py-3">
                       <div className="w-8 h-8 rounded-full flex items-center justify-center text-sm text-white flex-shrink-0" style={{ backgroundColor: from.color }}>
                         {from.name[0]}
                       </div>
