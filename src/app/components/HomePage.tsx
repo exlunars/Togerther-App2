@@ -24,7 +24,7 @@ export function HomePage() {
         <div className="max-w-[430px] mx-auto flex items-center justify-between">
           <div>
             <p className="text-xs text-gray-400 mb-0.5">우리의 추억</p>
-            <h1 className="text-xl" style={{ fontWeight: 700, color: '#1A1A1A' }}>Together</h1>
+            <h1 className="text-2xl" style={{ fontWeight: 700, color: '#1A1A1A' }}>Together</h1>
           </div>
           <button
             onClick={() => setShowAddModal(true)}

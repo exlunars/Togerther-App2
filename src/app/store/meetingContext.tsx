@@ -247,7 +247,7 @@ export function formatDate(dateStr: string): string {
   return d.toLocaleDateString('ko-KR', { year: 'numeric', month: 'long', day: 'numeric', weekday: 'short' });
 }
 
-const STORAGE_KEY = 'moim-app-meetings-v2';
+const STORAGE_KEY = 'moim-app-meetings-v3';
 
 function loadMeetings(): Meeting[] {
   try {
