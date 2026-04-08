@@ -11,6 +11,8 @@ const COVER_IMAGES = [
   'https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=800',
 ];
 
+const COVER_COLORS = ['#FF6B6B', '#FFB347', '#6C63FF', '#0984E3', '#00B894', '#F368E0'];
+
 const EMOJIS = ['🎉', '🧺', '✈️', '🎂', '🍻', '🎬', '⛺', '🎮', '🏃', '🎤', '🥘', '🌊'];
 
 interface Props {
@@ -23,6 +25,8 @@ export function AddMeetingModal({ onClose, onAdd }: Props) {
   const [date, setDate] = useState(new Date().toISOString().split('T')[0]);
   const [emoji, setEmoji] = useState('🎉');
   const [selectedCover, setSelectedCover] = useState(0);
+  const [coverType, setCoverType] = useState<'image' | 'color'>('image');
+  const [selectedColor, setSelectedColor] = useState(COVER_COLORS[0]);
   const [participantName, setParticipantName] = useState('');
   const [participants, setParticipants] = useState<{ name: string; color: string }[]>([]);
 
@@ -45,7 +49,7 @@ export function AddMeetingModal({ onClose, onAdd }: Props) {
       id: `m-${Date.now()}`,
       title: title.trim(),
       date,
-      coverImage: COVER_IMAGES[selectedCover],
+      coverImage: coverType === 'image' ? COVER_IMAGES[selectedCover] : selectedColor,
       emoji,
       participants: participants.map((p, i) => ({
         id: `p-${Date.now()}-${i}`,
@@ -104,21 +108,39 @@ export function AddMeetingModal({ onClose, onAdd }: Props) {
             </div>
           </div>
 
-          {/* Cover Image Selection */}
+          {/* Cover Selection */}
           <div className="mb-5">
             <label className="text-sm text-gray-500 mb-2 block">커버 이미지</label>
-            <div className="grid grid-cols-3 gap-2">
+            <div className="grid grid-cols-3 gap-2 mb-3">
               {COVER_IMAGES.map((img, i) => (
                 <button
                   key={i}
-                  onClick={() => setSelectedCover(i)}
-                  className={`relative h-20 rounded-xl overflow-hidden border-2 transition-all ${selectedCover === i ? 'border-[#0066FF] scale-95' : 'border-transparent'}`}
+                  onClick={() => { setSelectedCover(i); setCoverType('image'); }}
+                  className={`relative h-20 rounded-xl overflow-hidden border-2 transition-all ${coverType === 'image' && selectedCover === i ? 'border-[#0066FF] scale-95' : 'border-transparent'}`}
                 >
                   <img src={img} alt="" className="w-full h-full object-cover" />
-                  {selectedCover === i && (
+                  {coverType === 'image' && selectedCover === i && (
                     <div className="absolute inset-0 bg-[#0066FF]/30 flex items-center justify-center">
                       <div className="w-5 h-5 bg-white rounded-full flex items-center justify-center">
                         <div className="w-3 h-3 bg-[#0066FF] rounded-full" />
+                      </div>
+                    </div>
+                  )}
+                </button>
+              ))}
+            </div>
+            <div className="flex gap-2">
+              {COVER_COLORS.map(color => (
+                <button
+                  key={color}
+                  onClick={() => { setSelectedColor(color); setCoverType('color'); }}
+                  className={`flex-1 h-10 rounded-xl border-2 transition-all ${coverType === 'color' && selectedColor === color ? 'border-[#0066FF] scale-95' : 'border-transparent'}`}
+                  style={{ backgroundColor: color }}
+                >
+                  {coverType === 'color' && selectedColor === color && (
+                    <div className="w-full h-full flex items-center justify-center">
+                      <div className="w-4 h-4 bg-white rounded-full flex items-center justify-center">
+                        <div className="w-2.5 h-2.5 rounded-full" style={{ backgroundColor: color }} />
                       </div>
                     </div>
                   )}

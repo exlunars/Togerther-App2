@@ -71,7 +71,11 @@ export function MeetingDetailPage() {
     <div className="min-h-screen bg-white">
       {/* Hero Cover */}
       <div className="relative h-64 overflow-hidden">
-        <img src={meeting.coverImage} alt={meeting.title} className="w-full h-full object-cover" />
+        {meeting.coverImage.startsWith('#') ? (
+          <div className="w-full h-full" style={{ backgroundColor: meeting.coverImage }} />
+        ) : (
+          <img src={meeting.coverImage} alt={meeting.title} className="w-full h-full object-cover" />
+        )}
         <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
 
         {/* Back button */}

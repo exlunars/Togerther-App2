@@ -139,11 +139,15 @@ export function HomePage() {
                 >
                   {/* Cover */}
                   <div className="relative h-44 overflow-hidden">
-                    <img
-                      src={meeting.coverImage}
-                      alt={meeting.title}
-                      className="w-full h-full object-cover"
-                    />
+                    {meeting.coverImage.startsWith('#') ? (
+                      <div className="w-full h-full" style={{ backgroundColor: meeting.coverImage }} />
+                    ) : (
+                      <img
+                        src={meeting.coverImage}
+                        alt={meeting.title}
+                        className="w-full h-full object-cover"
+                      />
+                    )}
                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
                     <div className="absolute bottom-0 left-0 right-0 p-4">
                       <h3 className="text-white text-base mb-0.5" style={{ fontWeight: 700 }}>{meeting.title}</h3>
